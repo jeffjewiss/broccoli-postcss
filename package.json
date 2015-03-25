@@ -1,0 +1,26 @@
+{
+  "name": "broccoli-postcss",
+  "version": "1.0.0",
+  "description": "Postcss compiler for Broccoli",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeffjewiss/broccoli-postcss"
+  },
+  "keywords": [
+    "broccoli-plugin",
+    "css",
+    "postcss"
+  ],
+  "author": "Jeff Jewiss <jeffjewiss@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffjewiss/broccoli-postcss/issues"
+  },
+  "homepage": "https://github.com/jeffjewiss/broccoli-postcss",
+  "dependencies": {
+    "broccoli-caching-writer": "^0.5.5",
+    "mkdirp": "^0.5.0",
+    "postcss": "^4.0.6"
+  }
+}
