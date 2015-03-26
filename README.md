@@ -13,7 +13,7 @@ npm install --save-dev broccoli-postcss
 ```javascript
 var compileCSS = require('broccoli-postcss');
 
-var outputTree = compileCSS(inputFile, outputFile, plugins);
+var outputTree = compileCSS(inputTrees, inputFile, outputFile, plugins);
 ```
 
 - **`inputTrees`**: An array of trees that specify the directories used by Broccoli. If you have a single tree, pass `[tree]`.
@@ -36,5 +36,5 @@ var plugins = [
     },
 ];
 
-var outputTree = compileCSS('styles/app.css', 'assets/app.css', plugins);
+var outputTree = compileCSS(['styles'], 'app.css', 'app.css', plugins);
 ```
