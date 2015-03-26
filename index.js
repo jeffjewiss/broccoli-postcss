@@ -4,12 +4,16 @@ var mkdirp = require('mkdirp');
 var CachingWriter = require('broccoli-caching-writer');
 var postcss = require('postcss');
 
-function PostcssCompiler (inputFile, outputFile, plugins) {
+function PostcssCompiler (inputTrees, inputFile, outputFile, plugins) {
     if (!(this instanceof PostcssCompiler)) {
-        return new PostcssCompiler(inputFile, outputFile, plugins);
+        return new PostcssCompiler(inputTrees, inputFile, outputFile, plugins);
     }
 
-    CachingWriter.call(this, inputFile);
+    if (!Array.isArray(inputTrees)) {
+        throw new Error('Expected array for first argument - did you mean [tree] instead of tree?');
+    }
+
+    CachingWriter.call(this, inputTrees, inputFile);
 
     this.inputFile = inputFile;
     this.outputFile = outputFile;
@@ -21,9 +25,9 @@ PostcssCompiler.prototype.constructor = PostcssCompiler;
 
 PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
     var toFilePath = path.join(destDir, this.outputFile);
-    var fromFilePath = this.inputFile;
+    var fromFilePath = path.join(includePaths[0], this.inputFile);
 
-    if (!this.plugins || this.length < 1) {
+    if (!this.plugins || this.plugins.length < 1) {
         throw new Error('You must provide at least 1 plugin in the plugin array');
     }
 
