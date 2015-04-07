@@ -31,7 +31,6 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
         throw new Error('You must provide at least 1 plugin in the plugin array');
     }
 
-    var plugins = this.plugins;
     var processor = postcss();
     var css = fs.readFileSync(fromFilePath, 'utf8');
 
@@ -49,6 +48,6 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
     mkdirp.sync(path.dirname(toFilePath));
 
     fs.writeFileSync(toFilePath, result.css);
-}
+};
 
 module.exports = PostcssCompiler;
