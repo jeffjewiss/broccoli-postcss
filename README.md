@@ -1,5 +1,7 @@
 # broccoli-postcss
 
+[![npm version](https://badge.fury.io/js/broccoli-postcss.svg)](http://badge.fury.io/js/broccoli-postcss) [![Code Climate](https://codeclimate.com/github/jeffjewiss/broccoli-postcss/badges/gpa.svg)](https://codeclimate.com/github/jeffjewiss/broccoli-postcss)
+
 The broccoli-postcss plugin runs your `css` through postcss plugins of your choosing.
 
 ## Installation
