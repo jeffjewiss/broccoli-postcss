@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/jeffjewiss/broccoli-postcss"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "keywords": [
     "broccoli-plugin",
     "css",
@@ -21,6 +24,11 @@
   "dependencies": {
     "broccoli-caching-writer": "^0.5.5",
     "mkdirp": "^0.5.0",
-    "postcss": "^4.0.6"
+    "postcss": "^4.1.6"
+  },
+  "devDependencies": {
+    "postcss-pseudoelements": "^2.1.1",
+    "broccoli": "^0.15.3",
+    "mocha": "*"
   }
 }
