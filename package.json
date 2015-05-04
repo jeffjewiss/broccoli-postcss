@@ -13,6 +13,7 @@
   "keywords": [
     "broccoli-plugin",
     "css",
+    "postcss-runner",
     "postcss"
   ],
   "author": "Jeff Jewiss <jeffjewiss@gmail.com>",
