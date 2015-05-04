@@ -27,7 +27,7 @@ var outputTree = compileCSS(inputTrees, inputFile, outputFile, plugins);
 
 ```javascript
 var compileCSS = require('broccoli-postcss');
-var cssnext = require(‘cssnext’);
+var cssnext = require('cssnext');
 
 var plugins = [
     {
