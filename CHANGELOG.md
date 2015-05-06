@@ -1,5 +1,9 @@
 # master
 
+# 1.2.1
+
+* Better check for CssSyntaxError.
+
 # 1.2.0
 
 * Uses the PostCSS async api.
