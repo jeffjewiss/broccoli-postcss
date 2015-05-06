@@ -45,7 +45,7 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
         processor.use(plugin.module(pluginOptions));
     });
 
-    var processPromise = processor.process(css, options)
+    processor.process(css, options)
         .then(function (result) {
             mkdirp.sync(path.dirname(toFilePath));
             fs.writeFileSync(toFilePath, result.css);
@@ -56,7 +56,7 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
             });
         })
         .catch(function (error) {
-            if ( error instanceof CssSyntaxError ) {
+            if ( 'CssSyntaxError' === error.name ) {
                 process.stderr.write(error.message + error.showSourceCode());
             } else {
                 throw error;
