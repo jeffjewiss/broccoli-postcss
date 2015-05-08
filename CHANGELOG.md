@@ -1,5 +1,9 @@
 # master
 
+# 1.3.0
+
+* Added argument to pass options to source maps.
+
 # 1.2.1
 
 * Better check for CssSyntaxError.
