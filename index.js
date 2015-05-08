@@ -5,9 +5,9 @@ var CachingWriter = require('broccoli-caching-writer');
 var postcss = require('postcss');
 var CssSyntaxError = require('postcss/lib/css-syntax-error');
 
-function PostcssCompiler (inputTrees, inputFile, outputFile, plugins) {
+function PostcssCompiler (inputTrees, inputFile, outputFile, plugins, map) {
     if ( !(this instanceof PostcssCompiler) ) {
-        return new PostcssCompiler(inputTrees, inputFile, outputFile, plugins);
+        return new PostcssCompiler(inputTrees, inputFile, outputFile, plugins, map);
     }
 
     if ( !Array.isArray(inputTrees) ) {
@@ -19,6 +19,7 @@ function PostcssCompiler (inputTrees, inputFile, outputFile, plugins) {
     this.inputFile = inputFile;
     this.outputFile = outputFile;
     this.plugins = plugins || [];
+    this.map = map || {};
 }
 
 PostcssCompiler.prototype = Object.create(CachingWriter.prototype);
@@ -37,7 +38,7 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
     var options = {
         from: fromFilePath,
         to: toFilePath,
-        map: { inline: false }
+        map: this.map
     };
 
     this.plugins.forEach(function (plugin) {
