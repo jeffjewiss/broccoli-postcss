@@ -20,6 +20,7 @@ function PostcssCompiler (inputTrees, inputFile, outputFile, plugins, map) {
     this.outputFile = outputFile;
     this.plugins = plugins || [];
     this.map = map || {};
+    this.warningStream = process.stderr;
 }
 
 PostcssCompiler.prototype = Object.create(CachingWriter.prototype);
@@ -46,25 +47,24 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
         processor.use(plugin.module(pluginOptions));
     });
 
-    processor.process(css, options)
+    var warningStream = this.warningStream;
+
+    return processor.process(css, options)
         .then(function (result) {
+            result.warnings().forEach(function (warn) {
+                warningStream.write(warn.toString());
+            });
+
             mkdirp.sync(path.dirname(toFilePath));
             fs.writeFileSync(toFilePath, result.css);
         })
-        .then(function (result) {
-            result.warnings().forEach(function (warn) {
-                process.stderr.write(warn.toString());
-            });
-        })
         .catch(function (error) {
             if ( 'CssSyntaxError' === error.name ) {
-                process.stderr.write(error.message + error.showSourceCode());
-            } else {
-                throw error;
+                error.message += "\n" + error.showSourceCode();
             }
+
+            throw error;
         });
-
-
 };
 
 module.exports = PostcssCompiler;
