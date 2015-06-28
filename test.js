@@ -4,10 +4,22 @@ var path = require('path');
 var broccoli = require('broccoli');
 var postcssCompiler = require('./');
 var postcss = require('postcss');
+var rimraf = require('rimraf');
+var glob = require('glob');
+var async = require('async');
 
 var basicPluginSet = [
     {
         module: require('postcss-pseudoelements')
+    }
+];
+
+var optionsPluginSet = [
+    {
+        module: require('postcss-pseudoelements'),
+        options: {
+            to: 'newOutput.css'
+        }
     }
 ];
 
@@ -37,9 +49,14 @@ beforeEach(function () {
     warnings = [];
 });
 
+afterEach(function () {
+    glob('tmp/*', function(er,files){
+        if(er) console.error(er)
+        else async.forEach(files, rimraf)
+    })
+});
+
 it('should process css', function () {
-
-
     var outputTree = postcssCompiler(['fixture'], 'fixture.css', 'output.css', basicPluginSet, map);
     outputTree.warningStream = warningStreamStub;
 

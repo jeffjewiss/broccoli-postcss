@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
+var assign = require("object-assign");
 var CachingWriter = require('broccoli-caching-writer');
 var postcss = require('postcss');
 var CssSyntaxError = require('postcss/lib/css-syntax-error');
@@ -43,7 +44,7 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
     };
 
     this.plugins.forEach(function (plugin) {
-        var pluginOptions = plugin.options || {};
+        var pluginOptions = assign(options, plugin.options || {});
         processor.use(plugin.module(pluginOptions));
     });
 
