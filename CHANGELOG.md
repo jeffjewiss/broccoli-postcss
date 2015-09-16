@@ -1,5 +1,9 @@
 # master
 
+# 2.0.0
+
+* Updates Postcss to version 5.
+
 # 1.3.0
 
 * Added argument to pass options to source maps.
