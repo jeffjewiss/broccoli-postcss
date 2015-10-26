@@ -27,6 +27,7 @@ var outputTree = compileCSS(inputTrees, inputFile, outputFile, plugins, map);
 ## Example
 
 ```javascript
+/* Brocfile.js */
 var compileCSS = require('broccoli-postcss');
 var cssnext = require('cssnext');
 
@@ -40,4 +41,5 @@ var plugins = [
 ];
 
 var outputTree = compileCSS(['styles'], 'app.css', 'app.css', plugins, map);
+module.exports = outputTree;
 ```
