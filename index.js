@@ -58,6 +58,10 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
 
             mkdirp.sync(path.dirname(toFilePath));
             fs.writeFileSync(toFilePath, result.css);
+
+            if (result.map) {
+              fs.writeFileSync(toFilePath + '.map', result.map)
+            }
         })
         .catch(function (error) {
             if ( 'CssSyntaxError' === error.name ) {
