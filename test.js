@@ -50,10 +50,13 @@ beforeEach(function () {
 });
 
 afterEach(function () {
-    glob('tmp/*', function(er,files){
-        if(er) console.error(er)
-        else async.forEach(files, rimraf)
-    })
+    glob('tmp/*', function(err,files) {
+        if (err) {
+            console.error(er);
+        } else {
+            async.forEach(files, rimraf);
+        }
+    });
 });
 
 it('should process css', function () {
@@ -62,7 +65,10 @@ it('should process css', function () {
 
     return (new broccoli.Builder(outputTree)).build().then(function (dir) {
         var content = fs.readFileSync(path.join(dir.directory, 'output.css'), 'utf8');
+        var sourceMap = JSON.parse(fs.readFileSync(path.join(dir.directory, 'output.css.map'), 'utf8'));
+
         assert.strictEqual(content.trim(), 'a:before { content: "test"; }');
+        assert.strictEqual(sourceMap.mappings, 'AAAA,WAAY,gBAAgB,EAAE');
         assert.deepEqual(warnings, []);
     });
 });
