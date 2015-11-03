@@ -1,5 +1,9 @@
 # master
 
+# 2.1.0
+
+* Writes a source map file when map property is present
+
 # 2.0.0
 
 * Updates Postcss to version 5.
