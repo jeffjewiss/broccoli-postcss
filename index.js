@@ -2,6 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 var assign = require("object-assign");
+var includePathSearcher = require('include-path-searcher');
 var CachingWriter = require('broccoli-caching-writer');
 var postcss = require('postcss');
 var CssSyntaxError = require('postcss/lib/css-syntax-error');
@@ -15,7 +16,7 @@ function PostcssCompiler (inputTrees, inputFile, outputFile, plugins, map) {
         throw new Error('Expected array for first argument - did you mean [tree] instead of tree?');
     }
 
-    CachingWriter.call(this, inputTrees, inputFile);
+    CachingWriter.call(this, Array.isArray(inputTrees) ? inputTrees : [inputTrees]);
 
     this.inputFile = inputFile;
     this.outputFile = outputFile;
@@ -27,9 +28,9 @@ function PostcssCompiler (inputTrees, inputFile, outputFile, plugins, map) {
 PostcssCompiler.prototype = Object.create(CachingWriter.prototype);
 PostcssCompiler.prototype.constructor = PostcssCompiler;
 
-PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
-    var toFilePath = path.join(destDir, this.outputFile);
-    var fromFilePath = path.join(includePaths[0], this.inputFile);
+PostcssCompiler.prototype.build = function() {
+    var toFilePath = this.outputPath + '/' + this.outputFile;
+    var fromFilePath = includePathSearcher.findFileSync(this.inputFile, this.inputPaths);
 
     if ( !this.plugins || this.plugins.length < 1 ) {
         throw new Error('You must provide at least 1 plugin in the plugin array');
@@ -57,10 +58,14 @@ PostcssCompiler.prototype.updateCache = function (includePaths, destDir) {
             });
 
             mkdirp.sync(path.dirname(toFilePath));
-            fs.writeFileSync(toFilePath, result.css);
+            fs.writeFileSync(toFilePath, result.css, {
+                encoding: 'utf8'
+            });
 
             if (result.map) {
-              fs.writeFileSync(toFilePath + '.map', result.map)
+              fs.writeFileSync(toFilePath + '.map', result.map, {
+                  encoding: 'utf8'
+              })
             }
         })
         .catch(function (error) {
