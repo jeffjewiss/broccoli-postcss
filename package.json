@@ -1,6 +1,6 @@
 {
   "name": "broccoli-postcss",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Postcss compiler for Broccoli",
   "main": "index.js",
   "repository": {
