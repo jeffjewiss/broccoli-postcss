@@ -1,5 +1,9 @@
 # master
 
+# 2.1.1
+
+* Upgrades Broccoli Caching Writer to version 2.
+
 # 2.1.0
 
 * Writes a source map file when map property is present
