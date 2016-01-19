@@ -1,80 +1,62 @@
-var path = require('path');
-var fs = require('fs');
-var mkdirp = require('mkdirp');
-var assign = require("object-assign");
-var includePathSearcher = require('include-path-searcher');
-var CachingWriter = require('broccoli-caching-writer');
-var postcss = require('postcss');
-var CssSyntaxError = require('postcss/lib/css-syntax-error');
+var assign = require('object-assign')
+var Filter = require('broccoli-persistent-filter')
+var postcss = require('postcss')
 
-function PostcssCompiler (inputTrees, inputFile, outputFile, plugins, map) {
-    if ( !(this instanceof PostcssCompiler) ) {
-        return new PostcssCompiler(inputTrees, inputFile, outputFile, plugins, map);
-    }
+PostcssFilter.prototype = Object.create(Filter.prototype)
+PostcssFilter.prototype.constructor = PostcssFilter
 
-    if ( !Array.isArray(inputTrees) ) {
-        throw new Error('Expected array for first argument - did you mean [tree] instead of tree?');
-    }
+PostcssFilter.prototype.extensions = ['css']
+PostcssFilter.prototype.targetExtension = 'css'
 
-    CachingWriter.call(this, Array.isArray(inputTrees) ? inputTrees : [inputTrees]);
+function PostcssFilter (inputTree, _options) {
+  var options = _options || {}
+  if (!(this instanceof PostcssFilter)) {
+    return new PostcssFilter(inputTree, _options)
+  }
 
-    this.inputFile = inputFile;
-    this.outputFile = outputFile;
-    this.plugins = plugins || [];
-    this.map = map || {};
-    this.warningStream = process.stderr;
+  Filter.call(this, inputTree, options)
+
+  this.inputTree = inputTree
+  this.options = options
+  this.warningStream = process.stderr
 }
 
-PostcssCompiler.prototype = Object.create(CachingWriter.prototype);
-PostcssCompiler.prototype.constructor = PostcssCompiler;
+PostcssFilter.prototype.processString = function (str, relativePath) {
+  var warningStream = this.warningStream
+  var processor = postcss()
+  var opts = assign({
+    from: relativePath,
+    to: relativePath,
+    map: {
+      inline: false,
+      annotation: false
+    }
+  }, this.options)
 
-PostcssCompiler.prototype.build = function() {
-    var toFilePath = this.outputPath + '/' + this.outputFile;
-    var fromFilePath = includePathSearcher.findFileSync(this.inputFile, this.inputPaths);
+  if (!opts.plugins || opts.plugins.length < 1) {
+    throw new Error('You must provide at least 1 plugin in the plugin array')
+  }
 
-    if ( !this.plugins || this.plugins.length < 1 ) {
-        throw new Error('You must provide at least 1 plugin in the plugin array');
+  opts.plugins.forEach(function (plugin) {
+    var pluginOptions = assign(opts, plugin.options || {})
+    processor.use(plugin.module(pluginOptions))
+  })
+
+  return processor.process(str, opts)
+  .then(function (result) {
+    result.warnings().forEach(function (warn) {
+      warningStream.write(warn.toString())
+    })
+
+    return result.css
+  })
+  .catch(function (err) {
+    if (err.name === 'CssSyntaxError') {
+      err.message += '\n' + err.showSourceCode()
     }
 
-    var processor = postcss();
-    var css = fs.readFileSync(fromFilePath, 'utf8');
-    var options = {
-        from: fromFilePath,
-        to: toFilePath,
-        map: this.map
-    };
+    throw err
+  })
+}
 
-    this.plugins.forEach(function (plugin) {
-        var pluginOptions = assign(options, plugin.options || {});
-        processor.use(plugin.module(pluginOptions));
-    });
-
-    var warningStream = this.warningStream;
-
-    return processor.process(css, options)
-        .then(function (result) {
-            result.warnings().forEach(function (warn) {
-                warningStream.write(warn.toString());
-            });
-
-            mkdirp.sync(path.dirname(toFilePath));
-            fs.writeFileSync(toFilePath, result.css, {
-                encoding: 'utf8'
-            });
-
-            if (result.map) {
-              fs.writeFileSync(toFilePath + '.map', result.map, {
-                  encoding: 'utf8'
-              })
-            }
-        })
-        .catch(function (error) {
-            if ( 'CssSyntaxError' === error.name ) {
-                error.message += "\n" + error.showSourceCode();
-            }
-
-            throw error;
-        });
-};
-
-module.exports = PostcssCompiler;
+module.exports = PostcssFilter
