@@ -1,6 +1,6 @@
 {
   "name": "broccoli-postcss-sourcemaps",
-  "version": "2.1.1",
+  "version": "2.2.0-sourcemaps.0",
   "description": "Postcss compiler for Broccoli with support for sourcemaps and one-to-many compilation.",
   "main": "index.js",
   "repository": {
