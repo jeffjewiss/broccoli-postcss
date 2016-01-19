@@ -1,19 +1,20 @@
-# broccoli-postcss
+# broccoli-postcss-sourcemaps
 
-[![Build Status](https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master)](https://travis-ci.org/jeffjewiss/broccoli-postcss) [![npm version](https://badge.fury.io/js/broccoli-postcss.svg)](http://badge.fury.io/js/broccoli-postcss) [![Code Climate](https://codeclimate.com/github/jeffjewiss/broccoli-postcss/badges/gpa.svg)](https://codeclimate.com/github/jeffjewiss/broccoli-postcss)
+The broccoli-postcss-sourcemaps plugin runs your `css` through postcss plugins of your choosing.
 
-The broccoli-postcss plugin runs your `css` through postcss plugins of your choosing.
+This is a fork of [broccoli-postcss](https://github.com/jeffjewiss/broccoli-postcss)
+which adds support for sourcemaps and other 1-to-many css output scenarios.
 
 ## Installation
 
 ```shell
-npm install --save-dev broccoli-postcss
+npm install --save-dev broccoli-postcss-sourcemaps
 ```
 
 ## Usage
 
 ```javascript
-var compileCSS = require('broccoli-postcss');
+var compileCSS = require('broccoli-postcss-sourcemaps');
 
 var outputTree = compileCSS(inputTree, options);
 ```
@@ -21,6 +22,7 @@ var outputTree = compileCSS(inputTree, options);
 - **`inputTrees`**: An array of trees that specify the directories used by Broccoli. If you have a single tree, pass `[tree]`.
 - **`options`**: Options for PostCSS. Additional options are specified
    below.
+
 
 ### Options not passed to PostCSS
 
@@ -40,7 +42,7 @@ var outputTree = compileCSS(inputTree, options);
 
 ```javascript
 /* Brocfile.js */
-var compileCSS = require('broccoli-postcss');
+var compileCSS = require('broccoli-postcss-sourcemaps');
 var cssnext = require('cssnext');
 
 var options = {
@@ -51,7 +53,11 @@ var options = {
         browsers: ['last 2 version']
       }
     }
-  ]
+  ],
+  map: {
+    inline: false,
+    annotation: false
+  }
 }
 
 var outputTree = compileCSS(['styles'], options);
