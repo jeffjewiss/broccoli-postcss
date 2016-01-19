@@ -1,11 +1,11 @@
 {
-  "name": "broccoli-postcss",
-  "version": "2.1.1",
-  "description": "Postcss compiler for Broccoli",
+  "name": "broccoli-postcss-sourcemaps",
+  "version": "2.2.0-sourcemaps.0",
+  "description": "Postcss compiler for Broccoli with support for sourcemaps and one-to-many compilation.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeffjewiss/broccoli-postcss"
+    "url": "https://github.com/chriseppstein/broccoli-postcss"
   },
   "scripts": {
     "test": "mocha"
@@ -16,14 +16,17 @@
     "postcss",
     "postcss-runner"
   ],
-  "author": "Jeff Jewiss <jeffjewiss@gmail.com>",
+  "author": [
+    "Jeff Jewiss <jeffjewiss@gmail.com>",
+    "Chris Epppstein <chris@eppsteins.net>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeffjewiss/broccoli-postcss/issues"
+    "url": "https://github.com/chriseppstein/broccoli-postcss/issues"
   },
-  "homepage": "https://github.com/jeffjewiss/broccoli-postcss",
+  "homepage": "https://github.com/chriseppstein/broccoli-postcss",
   "dependencies": {
-    "broccoli-caching-writer": "^2.1.0",
+    "broccoli-multi-filter": "^1.2.3-multi.1",
     "include-path-searcher": "0.1.0",
     "mkdirp": "^0.5.0",
     "object-assign": "^3.0.0",
@@ -32,7 +35,7 @@
   "devDependencies": {
     "async": "^1.2.1",
     "broccoli": "^0.15.3",
-    "glob": "^5.0.0",
+    "glob": "^5.0.14",
     "mocha": "*",
     "postcss-pseudoelements": "^2.1.1",
     "rimraf": "^2.4.0"
