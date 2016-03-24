@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "nyc mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "standard",
+    "prepublish": "npm run lint && npm test"
   },
   "engines": {
     "node": ">=0.12"
@@ -39,6 +41,7 @@
     "mocha": "*",
     "nyc": "6.1.1",
     "postcss-pseudoelements": "^3.0.0",
-    "rimraf": "^2.4.0"
+    "rimraf": "^2.4.0",
+    "standard": "6.0.8"
   }
 }
