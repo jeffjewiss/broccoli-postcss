@@ -15,33 +15,48 @@ npm install --save-dev broccoli-postcss
 ## Usage
 
 ```javascript
-var compileCSS = require('broccoli-postcss');
-
-var outputTree = compileCSS(inputTrees, inputFile, outputFile, plugins, map);
+var compileCSS = require('broccoli-postcss')
+var outputTree = compileCSS(tree, options)
 ```
 
-- **`inputTrees`**: An array of trees that specify the directories used by Broccoli. If you have a single tree, pass `[tree]`.
-- **`inputFile`**: Relative path of the main CSS file to process.
-- **`outputFile`** Relative path of the output CSS file.
-- **`plugins`** An array of plugin objects to be used by Postcss (a minimum of 1 plugin is required). The supported object format is `module`: the plugin module itself, and `options`: an object of supported options for the given plugin.
-- **`map`** An object of options to describe how Postcss should [handle source maps](https://github.com/postcss/postcss#source-map).
+## API
+
+### broccoliPostcss(tree, [options])
+
+#### options
+
+##### plugins
+
+Type: `array`
+
+A list of plugin objects to be used by Postcss (a minimum of 1 plugin is required). The supported object format is `module`: the plugin module itself, and `options`: an object of supported options for the given plugin.
+
+##### map
+
+Type: `object`
+Default: `{ inline: false, annotation: false }`
+
+An object of options to describe how Postcss should [handle source maps](https://github.com/postcss/postcss#source-map).
+
 
 ## Example
 
 ```javascript
 /* Brocfile.js */
-var compileCSS = require('broccoli-postcss');
-var cssnext = require('cssnext');
+var compileCSS = require('broccoli-postcss')
+var cssnext = require('cssnext')
 
-var plugins = [
+var options =  {
+  plugins: [
     {
-        module: cssnext,
-        options: {
-            browsers: ['last 2 version']
-        }
+      module: cssnext,
+      options: {
+          browsers: ['last 2 version']
+      }
     },
-];
+  ]
+}
 
-var outputTree = compileCSS(['styles'], 'app.css', 'app.css', plugins, map);
-module.exports = outputTree;
+var outputTree = compileCSS('app/styles', options)
+module.exports = outputTree
 ```
