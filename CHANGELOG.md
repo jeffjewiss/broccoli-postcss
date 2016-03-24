@@ -1,5 +1,11 @@
 # master
 
+# 3.0.0
+
+* Converts plugin to run as a filter.
+* Adds linting with Standard.
+* Adds test coverage with nyc & coveralls.
+
 # 2.1.1
 
 * Upgrades Broccoli Caching Writer to version 2.
