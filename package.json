@@ -8,7 +8,8 @@
     "url": "https://github.com/jeffjewiss/broccoli-postcss"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "engines": {
     "node": ">=0.12"
@@ -38,6 +39,8 @@
     "glob": "^7.0.3",
     "mocha": "*",
     "postcss-pseudoelements": "^3.0.0",
+    "nyc": "6.1.1",
+    "postcss-pseudoelements": "^2.1.1",
     "rimraf": "^2.4.0"
   }
 }
