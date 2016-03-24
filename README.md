@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master)](https://travis-ci.org/jeffjewiss/broccoli-postcss)
 [![npm version](https://badge.fury.io/js/broccoli-postcss.svg)](http://badge.fury.io/js/broccoli-postcss)
 [![Code Climate](https://codeclimate.com/github/jeffjewiss/broccoli-postcss/badges/gpa.svg)](https://codeclimate.com/github/jeffjewiss/broccoli-postcss)
-[![Coverage Status](https://coveralls.io/repos/jeffjewiss/broccoli-postcss/badge.svg)](https://coveralls.io/r/jeffjewiss/broccoli-postcss)
+[![Coverage Status](https://coveralls.io/repos/github/jeffjewiss/broccoli-postcss/badge.svg?branch=master)](https://coveralls.io/github/jeffjewiss/broccoli-postcss?branch=master)
 
 The broccoli-postcss plugin runs your `css` through postcss plugins of your choosing.
 
