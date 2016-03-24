@@ -26,15 +26,15 @@
     "broccoli-caching-writer": "^2.1.0",
     "include-path-searcher": "0.1.0",
     "mkdirp": "^0.5.0",
-    "object-assign": "^3.0.0",
+    "object-assign": "^4.0.1",
     "postcss": "^5.0.4"
   },
   "devDependencies": {
     "async": "^1.2.1",
-    "broccoli": "^0.15.3",
-    "glob": "^5.0.0",
+    "broccoli": "^0.16.9",
+    "glob": "^7.0.3",
     "mocha": "*",
-    "postcss-pseudoelements": "^2.1.1",
+    "postcss-pseudoelements": "^3.0.0",
     "rimraf": "^2.4.0"
   }
 }
