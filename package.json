@@ -10,6 +10,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "engines": {
+    "node": ">=0.12"
+  },
   "keywords": [
     "broccoli-plugin",
     "css",
