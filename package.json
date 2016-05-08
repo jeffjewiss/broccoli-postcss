@@ -39,7 +39,7 @@
     "coveralls": "2.11.9",
     "glob": "^7.0.3",
     "mocha": "*",
-    "nyc": "6.4.2",
+    "nyc": "6.4.3",
     "postcss-pseudoelements": "^3.0.0",
     "rimraf": "^2.4.0",
     "standard": "7.0.1"
