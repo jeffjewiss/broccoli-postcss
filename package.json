@@ -38,7 +38,7 @@
     "broccoli": "^0.16.9",
     "coveralls": "2.11.9",
     "glob": "^7.0.3",
-    "mocha": "*",
+    "mocha": "2.5.3",
     "nyc": "7.0.0",
     "postcss-pseudoelements": "^3.0.0",
     "rimraf": "^2.4.0",
