@@ -36,7 +36,7 @@
   "devDependencies": {
     "async": "^1.2.1",
     "broccoli": "^0.16.9",
-    "coveralls": "2.11.9",
+    "coveralls": "2.11.10",
     "glob": "^7.0.3",
     "mocha": "*",
     "nyc": "7.0.0",
