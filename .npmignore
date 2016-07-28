@@ -1,7 +1,11 @@
 .DS_Store
 .editorconfig
-.npmignore
 .jshintrc
 **/.gitkeep
 tmp/
 dist/
+.nyc_output
+coverage
+fixture
+.travis.yml
+test.js
