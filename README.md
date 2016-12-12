@@ -44,7 +44,7 @@ An object of options to describe how Postcss should [handle source maps](https:/
 ```javascript
 /* Brocfile.js */
 var compileCSS = require('broccoli-postcss')
-var cssnext = require('cssnext')
+var cssnext = require('postcss-cssnext')
 
 var options =  {
   plugins: [
