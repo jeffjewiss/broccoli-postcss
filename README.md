@@ -36,7 +36,7 @@ A list of plugin objects to be used by Postcss (a minimum of 1 plugin is require
 Type: `object`
 Default: `{ inline: false, annotation: false }`
 
-An object of options to describe how Postcss should [handle source maps](https://github.com/postcss/postcss#source-map).
+An object of options to describe how Postcss should [handle source maps](https://github.com/postcss/postcss/blob/master/docs/source-maps.md).
 
 
 ## Example
