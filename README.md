@@ -1,8 +1,9 @@
 # broccoli-postcss
 
-[![Build Status](https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master)](https://travis-ci.org/jeffjewiss/broccoli-postcss)
-[![npm version](https://badge.fury.io/js/broccoli-postcss.svg)](http://badge.fury.io/js/broccoli-postcss)
-[![Coverage Status](https://coveralls.io/repos/github/jeffjewiss/broccoli-postcss/badge.svg?branch=master)](https://coveralls.io/github/jeffjewiss/broccoli-postcss?branch=master)
+[![Travis Build Status][travis-img]][travis-url]
+[![npm version][npm-img]][npm-url]
+[![Coverage Status][coveralls-img]][coveralls-url]
+[![bitHound Overall Score][bithound-img]][bithound-url]
 
 The broccoli-postcss plugin runs your `css` through postcss plugins of your choosing.
 
@@ -60,3 +61,12 @@ var options =  {
 var outputTree = compileCSS('app/styles', options)
 module.exports = outputTree
 ```
+
+[travis-img]: https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master
+[travis-url]: https://travis-ci.org/jeffjewiss/broccoli-postcss
+[npm-img]: https://badge.fury.io/js/broccoli-postcss.svg
+[npm-url]: http://badge.fury.io/js/broccoli-postcss
+[coveralls-img]: https://coveralls.io/repos/github/jeffjewiss/broccoli-postcss/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/jeffjewiss/broccoli-postcss?branch=master
+[bitHound-img]: https://www.bithound.io/github/jeffjewiss/broccoli-postcss/badges/score.svg
+[bitHound-url]: https://www.bithound.io/github/jeffjewiss/broccoli-postcss
