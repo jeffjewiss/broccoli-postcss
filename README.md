@@ -39,6 +39,20 @@ Default: `{ inline: false, annotation: false }`
 
 An object of options to describe how Postcss should [handle source maps](https://github.com/postcss/postcss/blob/master/docs/source-maps.md).
 
+##### include
+
+Type: `array`
+Default: `[]`
+
+Array of GlobStrings|RegExps|Functions to describe a whitelist of files to get processed by Postcss.
+
+##### exclude
+
+Type: `array`
+Default: `[]`
+
+Array of GlobStrings|RegExps|Functions to describe a blacklist of files to be ignored by Postcss.
+
 
 ## Example
 
@@ -55,7 +69,10 @@ var options =  {
           browsers: ['last 2 version']
       }
     },
-  ]
+  ],
+  map: false,
+  include: ['styles/*.css'],
+  exclude: ['vendor/bootstrap/**/*']
 }
 
 var outputTree = compileCSS('app/styles', options)

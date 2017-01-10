@@ -1,5 +1,6 @@
 var assign = require('object-assign')
 var Filter = require('broccoli-persistent-filter')
+var Funnel = require('broccoli-funnel')
 var postcss = require('postcss')
 
 PostcssFilter.prototype = Object.create(Filter.prototype)
@@ -12,6 +13,13 @@ function PostcssFilter (inputTree, _options) {
   var options = _options || {}
   if (!(this instanceof PostcssFilter)) {
     return new PostcssFilter(inputTree, _options)
+  }
+
+  if (options.exclude || options.include) {
+    inputTree = new Funnel(inputTree, {
+      exclude: options.exclude,
+      include: options.include
+    })
   }
 
   Filter.call(this, inputTree, options)
