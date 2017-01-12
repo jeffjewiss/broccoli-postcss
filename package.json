@@ -31,7 +31,7 @@
   "dependencies": {
     "broccoli-persistent-filter": "1.2.13",
     "object-assign": "4.1.0",
-    "postcss": "5.2.9"
+    "postcss": "5.2.10"
   },
   "devDependencies": {
     "async": "^2.1.0",
