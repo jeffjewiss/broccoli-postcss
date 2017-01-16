@@ -30,7 +30,7 @@
   "homepage": "https://github.com/jeffjewiss/broccoli-postcss",
   "dependencies": {
     "broccoli-persistent-filter": "1.2.13",
-    "object-assign": "4.1.0",
+    "object-assign": "4.1.1",
     "postcss": "5.2.10"
   },
   "devDependencies": {
