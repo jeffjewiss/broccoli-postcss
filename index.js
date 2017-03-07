@@ -1,7 +1,9 @@
-var assign = require('object-assign')
-var Filter = require('broccoli-persistent-filter')
-var Funnel = require('broccoli-funnel')
-var postcss = require('postcss')
+'use strict'
+
+const assign = require('object-assign')
+const Filter = require('broccoli-persistent-filter')
+const Funnel = require('broccoli-funnel')
+const postcss = require('postcss')
 
 PostcssFilter.prototype = Object.create(Filter.prototype)
 PostcssFilter.prototype.constructor = PostcssFilter
@@ -10,7 +12,7 @@ PostcssFilter.prototype.extensions = ['css']
 PostcssFilter.prototype.targetExtension = 'css'
 
 function PostcssFilter (inputTree, _options) {
-  var options = _options || {}
+  let options = _options || {}
   if (!(this instanceof PostcssFilter)) {
     return new PostcssFilter(inputTree, _options)
   }
@@ -45,22 +47,20 @@ PostcssFilter.prototype.processString = function (str, relativePath) {
     throw new Error('You must provide at least 1 plugin in the plugin array')
   }
 
-  opts.plugins.forEach(function (plugin) {
-    var pluginOptions = assign(opts, plugin.options || {})
+  opts.plugins.forEach((plugin) => {
+    let pluginOptions = assign(opts, plugin.options || {})
     processor.use(plugin.module(pluginOptions))
   })
 
   return processor.process(str, opts)
-  .then(function (result) {
-    result.warnings().forEach(function (warn) {
-      warningStream.write(warn.toString())
-    })
+  .then((result) => {
+    result.warnings().forEach(warn => warningStream.write(warn.toString()))
 
     return result.css
   })
-  .catch(function (err) {
+  .catch((err) => {
     if (err.name === 'CssSyntaxError') {
-      err.message += '\n' + err.showSourceCode()
+      err.message += `\n${err.showSourceCode()}`
     }
 
     throw err

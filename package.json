@@ -10,7 +10,7 @@
   "scripts": {
     "test": "nyc mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "standard --verbose | snazzy",
+    "lint": "eslint test *.js",
     "prepublish": "npm run lint && npm test"
   },
   "engines": {
@@ -38,12 +38,14 @@
     "async": "^2.1.0",
     "broccoli": "^1.1.0",
     "coveralls": "^2.11.15",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "7.0.0",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-standard": "2.1.1",
     "glob": "^7.1.0",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
     "postcss-pseudoelements": "^3.0.0",
-    "rimraf": "^2.5.0",
-    "snazzy": "^6.0.0",
-    "standard": "^9.0.0"
+    "rimraf": "^2.5.0"
   }
 }
