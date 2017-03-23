@@ -45,7 +45,7 @@
     "glob": "^7.1.0",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
-    "postcss-pseudoelements": "^3.0.0",
+    "postcss-pseudoelements": "^4.0.0",
     "rimraf": "^2.5.0"
   }
 }
