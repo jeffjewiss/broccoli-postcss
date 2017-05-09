@@ -11,27 +11,27 @@ PostcssFilter.prototype.constructor = PostcssFilter
 PostcssFilter.prototype.extensions = ['css']
 PostcssFilter.prototype.targetExtension = 'css'
 
-function PostcssFilter (inputTree, _options) {
+function PostcssFilter (inputNode, _options) {
   let options = _options || {}
 
   if (!(this instanceof PostcssFilter)) {
-    return new PostcssFilter(inputTree, _options)
+    return new PostcssFilter(inputNode, _options)
   }
 
   if (options.exclude || options.include) {
-    inputTree = new Funnel(inputTree, {
+    inputNode = new Funnel(inputNode, {
       exclude: options.exclude,
       include: options.include
     })
   }
 
-  Filter.call(this, inputTree, options)
+  Filter.call(this, inputNode, options)
 
   this.options = options
   this.warningStream = process.stderr
 }
 
-PostcssFilter.prototype.processString = function (str, relativePath) {
+PostcssFilter.prototype.processString = function (content, relativePath) {
   let warningStream = this.warningStream
   let processor = postcss()
   let opts = assign({
@@ -52,7 +52,7 @@ PostcssFilter.prototype.processString = function (str, relativePath) {
     processor.use(plugin.module(pluginOptions))
   })
 
-  return processor.process(str, opts)
+  return processor.process(content, opts)
   .then((result) => {
     result.warnings().forEach(warn => warningStream.write(warn.toString()))
 
