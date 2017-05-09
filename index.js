@@ -27,7 +27,6 @@ function PostcssFilter (inputTree, _options) {
 
   Filter.call(this, inputTree, options)
 
-  this.inputTree = inputTree
   this.options = options
   this.warningStream = process.stderr
 }
