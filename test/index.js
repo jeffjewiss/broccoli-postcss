@@ -14,7 +14,7 @@ const async = require('async')
 
 let basicPluginSet = [
   {
-    module: require('postcss-pseudoelements')
+    module: require('postcss-color-rebeccapurple')
   }
 ]
 
@@ -57,7 +57,7 @@ it('should process css', function () {
   return builder.build().then(function () {
     let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
-    assert.strictEqual(content.trim(), 'a:before { content: "test"; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFdBQVksZ0JBQWdCLEVBQUUiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOjpiZWZvcmUgeyBjb250ZW50OiBcInRlc3RcIjsgfVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: rgb(102, 51, 153)\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
     assert.deepEqual(warnings, [])
   })
 })
@@ -79,7 +79,7 @@ it('should only include css from include patterns', function () {
 
     let content = `${fixture.trim()}${missing.trim()}`
 
-    assert.strictEqual(content.trim(), 'a:before { content: "test"; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFdBQVksZ0JBQWdCLEVBQUUiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOjpiZWZvcmUgeyBjb250ZW50OiBcInRlc3RcIjsgfVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: rgb(102, 51, 153)\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
     assert.deepEqual(warnings, [])
   })
 })
@@ -101,7 +101,7 @@ it('should not include css from exclude patterns', function () {
 
     let content = `${fixture.trim()}${missing.trim()}`
 
-    assert.strictEqual(content.trim(), 'a:before { content: "test"; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFdBQVksZ0JBQWdCLEVBQUUiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhOjpiZWZvcmUgeyBjb250ZW50OiBcInRlc3RcIjsgfVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: rgb(102, 51, 153);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQXFCO0NBQ3RCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlO1xufVxuIl19 */')
     assert.deepEqual(warnings, [])
   })
 })

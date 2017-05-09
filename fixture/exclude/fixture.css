@@ -1,1 +1,3 @@
-a::before { content: "test"; }
+body {
+  color: rebeccapurple;
+}
