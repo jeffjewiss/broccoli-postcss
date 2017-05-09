@@ -13,6 +13,7 @@ PostcssFilter.prototype.targetExtension = 'css'
 
 function PostcssFilter (inputTree, _options) {
   let options = _options || {}
+
   if (!(this instanceof PostcssFilter)) {
     return new PostcssFilter(inputTree, _options)
   }
@@ -32,9 +33,9 @@ function PostcssFilter (inputTree, _options) {
 }
 
 PostcssFilter.prototype.processString = function (str, relativePath) {
-  var warningStream = this.warningStream
-  var processor = postcss()
-  var opts = assign({
+  let warningStream = this.warningStream
+  let processor = postcss()
+  let opts = assign({
     from: relativePath,
     to: relativePath,
     map: {
