@@ -153,3 +153,22 @@ it('should expose non-syntax errors', function () {
   assert.strictEqual(count, 1)
   assert.deepEqual(warnings, [])
 })
+
+it('should throw an error if there is not at least 1 plugin', function () {
+  let outputTree = postcssFilter('fixture/success', {})
+  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  let count = 0
+
+  outputTree.warningStream = warningStreamStub
+
+  return builder.build()
+  .catch((error) => {
+    count++
+    assert.strictEqual(error.broccoliPayload.originalError.name, 'Error')
+    assert.strictEqual(error.broccoliPayload.originalError.message, `You must provide at least 1 plugin in the plugin array`)
+  })
+  .then(() => {
+    assert.strictEqual(count, 1)
+    assert.deepEqual(warnings, [])
+  })
+})
