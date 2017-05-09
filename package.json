@@ -1,6 +1,6 @@
 {
   "name": "broccoli-postcss",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Postcss compiler for Broccoli",
   "main": "index.js",
   "repository": {
@@ -14,7 +14,7 @@
     "prepublish": "npm run lint && npm test"
   },
   "engines": {
-    "node": ">=0.12"
+    "node": "^4.5 || 6.* || 7.*"
   },
   "keywords": [
     "broccoli-plugin",
@@ -47,7 +47,7 @@
     "glob": "^7.1.0",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
-    "postcss-pseudoelements": "^3.0.0",
+    "postcss-color-rebeccapurple": "^2.0.0",
     "rimraf": "^2.5.0"
   }
 }
