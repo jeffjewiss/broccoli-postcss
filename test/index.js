@@ -57,7 +57,7 @@ it('should process css', function () {
   return builder.build().then(function () {
     let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
-    assert.strictEqual(content.trim(), 'body {\n  color: rgb(102, 51, 153)\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7Q0FDckIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGVcbn1cbiJdfQ== */')
     assert.deepEqual(warnings, [])
   })
 })
@@ -79,7 +79,7 @@ it('should only include css from include patterns', function () {
 
     let content = `${fixture.trim()}${missing.trim()}`
 
-    assert.strictEqual(content.trim(), 'body {\n  color: rgb(102, 51, 153)\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0JBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7Q0FDckIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGVcbn1cbiJdfQ== */')
     assert.deepEqual(warnings, [])
   })
 })
@@ -101,7 +101,7 @@ it('should not include css from exclude patterns', function () {
 
     let content = `${fixture.trim()}${missing.trim()}`
 
-    assert.strictEqual(content.trim(), 'body {\n  color: rgb(102, 51, 153);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UseUJBQXFCO0NBQ3RCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlO1xufVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBcUI7Q0FDdEIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGU7XG59XG4iXX0= */')
     assert.deepEqual(warnings, [])
   })
 })
