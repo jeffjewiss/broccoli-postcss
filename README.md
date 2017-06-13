@@ -16,8 +16,8 @@ npm install --save-dev broccoli-postcss
 ## Usage
 
 ```javascript
-var compileCSS = require('broccoli-postcss')
-var outputTree = compileCSS(tree, options)
+const compileCSS = require('broccoli-postcss')
+const outputTree = compileCSS(tree, options)
 ```
 
 ## API
@@ -31,6 +31,12 @@ var outputTree = compileCSS(tree, options)
 Type: `array`
 
 A list of plugin objects to be used by Postcss (a minimum of 1 plugin is required). The supported object format is `module`: the plugin module itself, and `options`: an object of supported options for the given plugin.
+
+#### browsers
+
+Type: `array`
+
+A list of browsers to support. Follows the [browserslist](https://github.com/ai/browserslist) format. Will be passed to each plugin and can be overridden using the plugin’s options.
 
 ##### map
 
