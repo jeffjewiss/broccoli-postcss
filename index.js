@@ -53,18 +53,18 @@ PostcssFilter.prototype.processString = function (content, relativePath) {
   })
 
   return processor.process(content, opts)
-  .then((result) => {
-    result.warnings().forEach(warn => warningStream.write(warn.toString()))
+    .then((result) => {
+      result.warnings().forEach(warn => warningStream.write(warn.toString()))
 
-    return result.css
-  })
-  .catch((err) => {
-    if (err.name === 'CssSyntaxError') {
-      err.message += `\n${err.showSourceCode()}`
-    }
+      return result.css
+    })
+    .catch((err) => {
+      if (err.name === 'CssSyntaxError') {
+        err.message += `\n${err.showSourceCode()}`
+      }
 
-    throw err
-  })
+      throw err
+    })
 }
 
 module.exports = PostcssFilter

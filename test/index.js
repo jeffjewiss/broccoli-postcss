@@ -126,15 +126,15 @@ it('should expose syntax errors', function () {
   let count = 0
 
   return builder.build()
-  .catch((error) => {
-    count++
-    assert.strictEqual(error.broccoliPayload.originalError.name, 'CssSyntaxError')
-    assert.strictEqual(error.broccoliPayload.originalError.message, `${error.broccoliPayload.originalError.input.file}:1:1: Unknown word\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 | \u001b[39ma \u001b[33m}\u001b[39m\n \u001b[90m   | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 2 | \u001b[39m`)
-  })
-  .then(() => {
-    assert.strictEqual(count, 1)
-    assert.deepEqual(warnings, [])
-  })
+    .catch((error) => {
+      count++
+      assert.strictEqual(error.broccoliPayload.originalError.name, 'CssSyntaxError')
+      assert.strictEqual(error.broccoliPayload.originalError.message, `${error.broccoliPayload.originalError.input.file}:1:1: Unknown word\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 | \u001b[39ma \u001b[33m}\u001b[39m\n \u001b[90m   | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 2 | \u001b[39m`)
+    })
+    .then(() => {
+      assert.strictEqual(count, 1)
+      assert.deepEqual(warnings, [])
+    })
 })
 
 it('should expose non-syntax errors', function () {
@@ -162,13 +162,13 @@ it('should throw an error if there is not at least 1 plugin', function () {
   outputTree.warningStream = warningStreamStub
 
   return builder.build()
-  .catch((error) => {
-    count++
-    assert.strictEqual(error.broccoliPayload.originalError.name, 'Error')
-    assert.strictEqual(error.broccoliPayload.originalError.message, `You must provide at least 1 plugin in the plugin array`)
-  })
-  .then(() => {
-    assert.strictEqual(count, 1)
-    assert.deepEqual(warnings, [])
-  })
+    .catch((error) => {
+      count++
+      assert.strictEqual(error.broccoliPayload.originalError.name, 'Error')
+      assert.strictEqual(error.broccoliPayload.originalError.message, `You must provide at least 1 plugin in the plugin array`)
+    })
+    .then(() => {
+      assert.strictEqual(count, 1)
+      assert.deepEqual(warnings, [])
+    })
 })
