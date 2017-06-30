@@ -30,7 +30,7 @@
   "homepage": "https://github.com/jeffjewiss/broccoli-postcss",
   "dependencies": {
     "broccoli-funnel": "1.2.0",
-    "broccoli-persistent-filter": "1.4.1",
+    "broccoli-persistent-filter": "1.4.2",
     "object-assign": "4.1.1",
     "postcss": "6.0.3"
   },
