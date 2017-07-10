@@ -1,5 +1,32 @@
 # master
 
+# 3.4.2
+
+* support Node 8
+
+# 3.4.1
+
+* update Postcss to v6
+
+# 3.4.0
+
+* switch plugins for testing
+* better testing
+* internal plugin refactoring
+
+# 3.3.0
+
+* allow filtering of vendor files
+* use Yarn
+
+# 3.2.0
+
+* update Broccoli to v1
+
+# 3.1.0
+
+* drop support for Node v0.10.0
+
 # 3.0.0
 
 * Converts plugin to run as a filter.
