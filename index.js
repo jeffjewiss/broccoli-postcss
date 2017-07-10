@@ -40,6 +40,10 @@ PostcssFilter.prototype.processString = function (content, relativePath) {
     map: {
       inline: false,
       annotation: false
+    },
+    errors: {
+      showSourceCode: true,
+      terminalColors: true
     }
   }, this.options)
 
@@ -60,7 +64,9 @@ PostcssFilter.prototype.processString = function (content, relativePath) {
     })
     .catch((err) => {
       if (err.name === 'CssSyntaxError') {
-        err.message += `\n${err.showSourceCode(false)}`
+        if (opts.errors.showSourceCode) {
+          err.message += `\n${err.showSourceCode(opts.errors.terminalColors)}`
+        }
       }
 
       throw err

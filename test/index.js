@@ -119,7 +119,13 @@ it('should expose warnings', function () {
 })
 
 it('should expose syntax errors', function () {
-  let outputTree = postcssFilter('fixture/syntax-error', { plugins: testWarnPluginSet })
+  let outputTree = postcssFilter('fixture/syntax-error', {
+    errors: {
+      showSourceCode: true,
+      terminalColors: false
+    },
+    plugins: testWarnPluginSet
+  })
   let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   outputTree.warningStream = warningStreamStub
 
