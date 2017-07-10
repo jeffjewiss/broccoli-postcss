@@ -4,7 +4,13 @@ node_js:
   - 7
   - 6
   - 4
-
+before_install:
+  - npm install -g yarn
+  - yarn global add greenkeeper-lockfile@1
+install:
+  - yarn
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
 notifications:
   email: true
 after_success: npm run coverage
