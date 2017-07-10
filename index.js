@@ -60,7 +60,7 @@ PostcssFilter.prototype.processString = function (content, relativePath) {
     })
     .catch((err) => {
       if (err.name === 'CssSyntaxError') {
-        err.message += `\n${err.showSourceCode()}`
+        err.message += `\n${err.showSourceCode(false)}`
       }
 
       throw err
