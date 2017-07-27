@@ -1,5 +1,9 @@
 # master
 
+# 3.5.0
+
+* allow plugins to be configured as functions
+
 # 3.4.2
 
 * support Node 8
