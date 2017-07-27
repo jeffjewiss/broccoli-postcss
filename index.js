@@ -52,8 +52,16 @@ PostcssFilter.prototype.processString = function (content, relativePath) {
   }
 
   opts.plugins.forEach((plugin) => {
-    let pluginOptions = assign(opts, plugin.options || {})
-    processor.use(plugin.module(pluginOptions))
+    let pluginInstance
+
+    if (plugin.module) {
+      let pluginOptions = assign(opts, plugin.options || {})
+      pluginInstance = plugin.module(pluginOptions)
+    } else {
+      pluginInstance = plugin
+    }
+
+    processor.use(pluginInstance)
   })
 
   return processor.process(content, opts)

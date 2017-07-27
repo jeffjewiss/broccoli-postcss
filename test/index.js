@@ -178,3 +178,25 @@ it('should throw an error if there is not at least 1 plugin', function () {
       assert.deepEqual(warnings, [])
     })
 })
+
+it('supports an array of plugin instances', function () {
+  let basicPlugin = basicPluginSet[0].module
+  let basicOptions = basicPluginSet[0].options
+  let pluginInstance = basicPlugin(basicOptions)
+
+  let outputTree = postcssFilter('fixture/success', {
+    plugins: [
+      pluginInstance
+    ],
+    map: true
+  })
+  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  postcssFilter.warningStream = warningStreamStub
+
+  return builder.build().then(function () {
+    let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
+
+    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7Q0FDckIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGVcbn1cbiJdfQ== */')
+    assert.deepEqual(warnings, [])
+  })
+})

@@ -29,7 +29,30 @@ const outputTree = compileCSS(tree, options)
 
 Type: `array`
 
-A list of plugin objects to be used by Postcss (a minimum of 1 plugin is required). The supported object format is `module`: the plugin module itself, and `options`: an object of supported options for the given plugin.
+A list of plugin objects to be used by Postcss (a minimum of 1 plugin is required).
+
+There are two supported methods for defining plugins:
+
+1. Object form
+
+    ```javascript
+    plugins: [
+      {
+        module: require('some-plugin'),
+        options: { /* options for `some-plugin` */ }
+      }
+    ]
+    ```
+
+2. Function form
+
+    ```javascript
+    plugins: [
+      require('some-plugin')({ /* options for `some-plugin` */ }
+    ]
+    ```
+
+Note: additional options (defined below) that are merged with the individual plugin options are *only* supported for plugins defined in "object form".
 
 #### browsers
 
