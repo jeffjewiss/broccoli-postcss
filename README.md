@@ -107,6 +107,10 @@ var outputTree = compileCSS('app/styles', options)
 module.exports = outputTree
 ```
 
+#### Sponsor
+
+[![Sponsor](https://app.codesponsor.io/embed/H7bZKd45V3ahr55pXGPsoc37/jeffjewiss/broccoli-postcss.svg)](https://app.codesponsor.io/link/H7bZKd45V3ahr55pXGPsoc37/jeffjewiss/broccoli-postcss)
+
 [travis-img]: https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master
 [travis-url]: https://travis-ci.org/jeffjewiss/broccoli-postcss
 [npm-img]: https://badge.fury.io/js/broccoli-postcss.svg
