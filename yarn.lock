@@ -312,9 +312,9 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
-broccoli-funnel@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.2.0.tgz#cddc3afc5ff1685a8023488fff74ce6fb5a51296"
+broccoli-funnel@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-2.0.0.tgz#12bec71c34118eedb0cc1d9a3a41df97b6b0c73b"
   dependencies:
     array-equal "^1.0.0"
     blank-object "^1.0.1"
