@@ -5,7 +5,7 @@ node_js:
   - 6
   - 4
 before_install:
-  - npm install -g yarn
+  - yarn config set no-progress
   - yarn global add greenkeeper-lockfile@1
 install:
   - yarn
