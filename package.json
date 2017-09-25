@@ -8,7 +8,7 @@
     "url": "https://github.com/jeffjewiss/broccoli-postcss"
   },
   "scripts": {
-    "test": "nyc mocha",
+    "test": "nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint test *.js",
     "prepublishOnly": "npm run lint && npm test"
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "async": "^2.1.0",
+    "ava": "^0.22.0",
     "broccoli": "^1.1.0",
     "coveralls": "^2.11.15",
     "eslint": "^4.1.1",
@@ -45,7 +46,6 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "glob": "^7.1.0",
-    "mocha": "^3.4.1",
     "nyc": "^11.0.2",
     "postcss-color-rebeccapurple": "^3.0.0",
     "rimraf": "^2.5.0"
