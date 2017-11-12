@@ -1,5 +1,9 @@
 # master
 
+# 3.5.1
+
+* update dependencies
+
 # 3.5.0
 
 * allow plugins to be configured as functions
