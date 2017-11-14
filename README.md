@@ -48,7 +48,7 @@ There are two supported methods for defining plugins:
 
     ```javascript
     plugins: [
-      require('some-plugin')({ /* options for `some-plugin` */ }
+      require('some-plugin')({ /* options for `some-plugin` */ })
     ]
     ```
 
