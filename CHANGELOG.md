@@ -1,5 +1,10 @@
 # master
 
+# 3.5.2
+
+* support Node 9
+* drop testing for Node 7
+
 # 3.5.1
 
 * update dependencies
