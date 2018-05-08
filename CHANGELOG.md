@@ -1,5 +1,9 @@
 # master
 
+# 3.5.3
+
+* support Node 10
+
 # 3.5.2
 
 * support Node 9
