@@ -14,12 +14,13 @@
     "prepublishOnly": "npm run lint && npm test"
   },
   "engines": {
-    "node": ">= 6.9"
+    "node": ">= 6.9",
+    "yarn": "YARN NO LONGER USED - use npm instead."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint",
-      "pre-push": "yarn test"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
     }
   },
   "files": [
