@@ -48,7 +48,7 @@
     "async": "^2.1.0",
     "broccoli": "^1.1.0",
     "coveralls": "^3.0.0",
-    "eslint": "^4.1.1",
+    "eslint": "^5.0.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-node": "^6.0.0",
