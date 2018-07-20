@@ -42,7 +42,7 @@
     "broccoli-funnel": "2.0.1",
     "broccoli-persistent-filter": "1.4.3",
     "object-assign": "4.1.1",
-    "postcss": "7.0.0"
+    "postcss": "7.0.1"
   },
   "devDependencies": {
     "async": "^2.1.0",
