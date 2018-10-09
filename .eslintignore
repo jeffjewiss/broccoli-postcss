@@ -1,0 +1,7 @@
+# compiled output
+/tmp/
+
+# misc
+/coverage/
+/fixture/
+/.nyc_output/

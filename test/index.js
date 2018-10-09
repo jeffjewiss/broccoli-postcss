@@ -58,7 +58,7 @@ it('should process css', function () {
     let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7Q0FDckIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGVcbn1cbiJdfQ== */')
-    assert.deepEqual(warnings, [])
+    assert.deepStrictEqual(warnings, [])
   })
 })
 
@@ -80,7 +80,7 @@ it('should only include css from include patterns', function () {
     let content = `${fixture.trim()}${missing.trim()}`
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7Q0FDckIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGVcbn1cbiJdfQ== */')
-    assert.deepEqual(warnings, [])
+    assert.deepStrictEqual(warnings, [])
   })
 })
 
@@ -102,7 +102,7 @@ it('should not include css from exclude patterns', function () {
     let content = `${fixture.trim()}${missing.trim()}`
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBcUI7Q0FDdEIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGU7XG59XG4iXX0= */')
-    assert.deepEqual(warnings, [])
+    assert.deepStrictEqual(warnings, [])
   })
 })
 
@@ -114,7 +114,7 @@ it('should expose warnings', function () {
   return builder.build().then(function () {
     let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
     assert.strictEqual(content.trim(), 'a {}')
-    assert.deepEqual(warnings, [ 'postcss-test-warn: This is a warning.' ])
+    assert.deepStrictEqual(warnings, [ 'postcss-test-warn: This is a warning.' ])
   })
 })
 
@@ -139,7 +139,7 @@ it('should expose syntax errors', function () {
     })
     .then(() => {
       assert.strictEqual(count, 1)
-      assert.deepEqual(warnings, [])
+      assert.deepStrictEqual(warnings, [])
     })
 })
 
@@ -157,7 +157,7 @@ it('should expose non-syntax errors', function () {
   }
 
   assert.strictEqual(count, 1)
-  assert.deepEqual(warnings, [])
+  assert.deepStrictEqual(warnings, [])
 })
 
 it('should throw an error if there is not at least 1 plugin', function () {
@@ -175,7 +175,7 @@ it('should throw an error if there is not at least 1 plugin', function () {
     })
     .then(() => {
       assert.strictEqual(count, 1)
-      assert.deepEqual(warnings, [])
+      assert.deepStrictEqual(warnings, [])
     })
 })
 
@@ -197,6 +197,6 @@ it('supports an array of plugin instances', function () {
     let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7Q0FDckIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGVcbn1cbiJdfQ== */')
-    assert.deepEqual(warnings, [])
+    assert.deepStrictEqual(warnings, [])
   })
 })
