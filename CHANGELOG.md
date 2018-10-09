@@ -1,5 +1,12 @@
 # master
 
+# 4.0.0
+
+* drop support for Node 4
+* remove yarn
+* relax dependencies
+* upgrade to Postcss 7
+
 # 3.5.3
 
 * support Node 10
