@@ -1,5 +1,10 @@
 # master
 
+# 4.0.1
+
+* remove appveyor yml
+* fix yarn engine text
+
 # 4.0.0
 
 * drop support for Node 4
