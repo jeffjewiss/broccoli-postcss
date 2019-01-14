@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path')
 const assign = require('object-assign')
 const Filter = require('broccoli-persistent-filter')
 const Funnel = require('broccoli-funnel')
@@ -34,9 +35,11 @@ function PostcssFilter (inputNode, _options) {
 PostcssFilter.prototype.processString = function (content, relativePath) {
   const warningStream = this.warningStream
   const processor = postcss()
+  const from = this.inputPaths[0] ? path.join(this.inputPaths[0], relativePath) : relativePath
+  const to = this.outputPath ? path.join(this.outputPath, relativePath) : relativePath
   const opts = assign({
-    from: relativePath,
-    to: relativePath,
+    from,
+    to,
     map: {
       inline: false,
       annotation: false

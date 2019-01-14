@@ -57,7 +57,7 @@ it('should process css', function () {
   return builder.build().then(function () {
     const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
-    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7QUFDRiIsImZpbGUiOiJmaXh0dXJlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmViZWNjYXB1cnBsZVxufVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL1VzZXJzL2plZmYvQ29kZS9icm9jY29saS1wb3N0Y3NzL2ZpeHR1cmUvc3VjY2Vzcy9maXh0dXJlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
     assert.deepStrictEqual(warnings, [])
   })
 })
@@ -79,7 +79,7 @@ it('should only include css from include patterns', function () {
 
     const content = `${fixture.trim()}${missing.trim()}`
 
-    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7QUFDRiIsImZpbGUiOiJmaXh0dXJlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmViZWNjYXB1cnBsZVxufVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL291dC0xLWZ1bm5lbC9maXh0dXJlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
     assert.deepStrictEqual(warnings, [])
   })
 })
@@ -101,7 +101,7 @@ it('should not include css from exclude patterns', function () {
 
     const content = `${fixture.trim()}${missing.trim()}`
 
-    assert.strictEqual(content.trim(), 'body {\n  color: #639;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7QUFDdEIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGU7XG59XG4iXX0= */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL291dC0xLWZ1bm5lbC9maXh0dXJlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQXFCO0NBQ3RCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlO1xufVxuIl19 */')
     assert.deepStrictEqual(warnings, [])
   })
 })
@@ -196,7 +196,7 @@ it('supports an array of plugin instances', function () {
   return builder.build().then(function () {
     const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
-    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7QUFDRiIsImZpbGUiOiJmaXh0dXJlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmViZWNjYXB1cnBsZVxufVxuIl19 */')
+    assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL1VzZXJzL2plZmYvQ29kZS9icm9jY29saS1wb3N0Y3NzL2ZpeHR1cmUvc3VjY2Vzcy9maXh0dXJlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQW9CO0NBQ3JCIiwiZmlsZSI6ImZpeHR1cmUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGNvbG9yOiByZWJlY2NhcHVycGxlXG59XG4iXX0= */')
     assert.deepStrictEqual(warnings, [])
   })
 })
