@@ -1,5 +1,9 @@
 # master
 
+# 4.0.2
+
+* security release for extend and lodash
+
 # 4.0.1
 
 * remove appveyor yml
