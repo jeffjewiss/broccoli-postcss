@@ -1,11 +1,10 @@
 language: node_js
 node_js:
+  - 12
   - 10
-  - 9
   - 8
-  - 6
 before_install:
-  - npm i -g install npm@6
+  - npm install --global npm@6
 install:
   - npm ci
 notifications:

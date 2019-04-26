@@ -14,7 +14,7 @@
     "prepublishOnly": "npm run lint && npm test"
   },
   "engines": {
-    "node": ">= 6.9"
+    "node": ">= 8"
   },
   "husky": {
     "hooks": {
