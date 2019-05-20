@@ -44,7 +44,7 @@
     "postcss": "^7.0.5"
   },
   "devDependencies": {
-    "async": "^2.1.0",
+    "async": "^3.0.0",
     "broccoli": "^2.0.0",
     "coveralls": "^3.0.0",
     "eslint": "^5.0.0",
