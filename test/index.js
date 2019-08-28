@@ -12,13 +12,13 @@ const rimraf = require('rimraf')
 const glob = require('glob')
 const async = require('async')
 
-let basicPluginSet = [
+const basicPluginSet = [
   {
     module: require('postcss-color-rebeccapurple')
   }
 ]
 
-let testWarnPluginSet = [
+const testWarnPluginSet = [
   {
     module: postcss.plugin('postcss-test-warn', function (opts) {
       return function (css, result) {
@@ -29,7 +29,7 @@ let testWarnPluginSet = [
 ]
 
 let warnings = []
-let warningStreamStub = {
+const warningStreamStub = {
   write: function (warning) {
     warnings.push(warning)
   }
@@ -50,12 +50,12 @@ afterEach(function () {
 })
 
 it('should process css', function () {
-  let outputTree = postcssFilter('fixture/success', { plugins: basicPluginSet, map: true })
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const outputTree = postcssFilter('fixture/success', { plugins: basicPluginSet, map: true })
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   postcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
-    let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
+    const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7QUFDRiIsImZpbGUiOiJmaXh0dXJlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmViZWNjYXB1cnBsZVxufVxuIl19 */')
     assert.deepStrictEqual(warnings, [])
@@ -63,12 +63,12 @@ it('should process css', function () {
 })
 
 it('should only include css from include patterns', function () {
-  let outputTree = postcssFilter('fixture/include', { plugins: basicPluginSet, map: true, include: ['fixture.css'] })
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const outputTree = postcssFilter('fixture/include', { plugins: basicPluginSet, map: true, include: ['fixture.css'] })
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   postcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
-    let fixture = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
+    const fixture = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
     let missing = ''
 
     try {
@@ -77,7 +77,7 @@ it('should only include css from include patterns', function () {
       // NO-OP
     }
 
-    let content = `${fixture.trim()}${missing.trim()}`
+    const content = `${fixture.trim()}${missing.trim()}`
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7QUFDRiIsImZpbGUiOiJmaXh0dXJlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmViZWNjYXB1cnBsZVxufVxuIl19 */')
     assert.deepStrictEqual(warnings, [])
@@ -85,12 +85,12 @@ it('should only include css from include patterns', function () {
 })
 
 it('should not include css from exclude patterns', function () {
-  let outputTree = postcssFilter('fixture/exclude', { plugins: basicPluginSet, map: true, exclude: ['missing.css'] })
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const outputTree = postcssFilter('fixture/exclude', { plugins: basicPluginSet, map: true, exclude: ['missing.css'] })
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   postcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
-    let fixture = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
+    const fixture = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
     let missing = ''
 
     try {
@@ -99,7 +99,7 @@ it('should not include css from exclude patterns', function () {
       // NO-OP
     }
 
-    let content = `${fixture.trim()}${missing.trim()}`
+    const content = `${fixture.trim()}${missing.trim()}`
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBb0I7QUFDdEIiLCJmaWxlIjoiZml4dHVyZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgY29sb3I6IHJlYmVjY2FwdXJwbGU7XG59XG4iXX0= */')
     assert.deepStrictEqual(warnings, [])
@@ -107,26 +107,26 @@ it('should not include css from exclude patterns', function () {
 })
 
 it('should expose warnings', function () {
-  let outputTree = postcssFilter('fixture/warning', { plugins: testWarnPluginSet })
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const outputTree = postcssFilter('fixture/warning', { plugins: testWarnPluginSet })
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   outputTree.warningStream = warningStreamStub
 
   return builder.build().then(function () {
-    let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
+    const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
     assert.strictEqual(content.trim(), 'a {}')
-    assert.deepStrictEqual(warnings, [ 'postcss-test-warn: This is a warning.' ])
+    assert.deepStrictEqual(warnings, ['postcss-test-warn: This is a warning.'])
   })
 })
 
 it('should expose syntax errors', function () {
-  let outputTree = postcssFilter('fixture/syntax-error', {
+  const outputTree = postcssFilter('fixture/syntax-error', {
     errors: {
       showSourceCode: true,
       terminalColors: false
     },
     plugins: testWarnPluginSet
   })
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   outputTree.warningStream = warningStreamStub
 
   let count = 0
@@ -144,7 +144,7 @@ it('should expose syntax errors', function () {
 })
 
 it('should expose non-syntax errors', function () {
-  let outputTree = postcssFilter('fixture/missing-file', { plugins: testWarnPluginSet })
+  const outputTree = postcssFilter('fixture/missing-file', { plugins: testWarnPluginSet })
   let count = 0
 
   outputTree.warningStream = warningStreamStub
@@ -161,8 +161,8 @@ it('should expose non-syntax errors', function () {
 })
 
 it('should throw an error if there is not at least 1 plugin', function () {
-  let outputTree = postcssFilter('fixture/success', {})
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const outputTree = postcssFilter('fixture/success', {})
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   let count = 0
 
   outputTree.warningStream = warningStreamStub
@@ -171,7 +171,7 @@ it('should throw an error if there is not at least 1 plugin', function () {
     .catch((error) => {
       count++
       assert.strictEqual(error.broccoliPayload.originalError.name, 'Error')
-      assert.strictEqual(error.broccoliPayload.originalError.message, `You must provide at least 1 plugin in the plugin array`)
+      assert.strictEqual(error.broccoliPayload.originalError.message, 'You must provide at least 1 plugin in the plugin array')
     })
     .then(() => {
       assert.strictEqual(count, 1)
@@ -180,21 +180,21 @@ it('should throw an error if there is not at least 1 plugin', function () {
 })
 
 it('supports an array of plugin instances', function () {
-  let basicPlugin = basicPluginSet[0].module
-  let basicOptions = basicPluginSet[0].options
-  let pluginInstance = basicPlugin(basicOptions)
+  const basicPlugin = basicPluginSet[0].module
+  const basicOptions = basicPluginSet[0].options
+  const pluginInstance = basicPlugin(basicOptions)
 
-  let outputTree = postcssFilter('fixture/success', {
+  const outputTree = postcssFilter('fixture/success', {
     plugins: [
       pluginInstance
     ],
     map: true
   })
-  let builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
+  const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   postcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
-    let content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
+    const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
 
     assert.strictEqual(content.trim(), 'body {\n  color: #639\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpeHR1cmUuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7QUFDRiIsImZpbGUiOiJmaXh0dXJlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkge1xuICBjb2xvcjogcmViZWNjYXB1cnBsZVxufVxuIl19 */')
     assert.deepStrictEqual(warnings, [])
