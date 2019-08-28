@@ -12,7 +12,7 @@ PostcssFilter.prototype.extensions = ['css']
 PostcssFilter.prototype.targetExtension = 'css'
 
 function PostcssFilter (inputNode, _options) {
-  let options = _options || {}
+  const options = _options || {}
 
   if (!(this instanceof PostcssFilter)) {
     return new PostcssFilter(inputNode, _options)
@@ -32,9 +32,9 @@ function PostcssFilter (inputNode, _options) {
 }
 
 PostcssFilter.prototype.processString = function (content, relativePath) {
-  let warningStream = this.warningStream
-  let processor = postcss()
-  let opts = assign({
+  const warningStream = this.warningStream
+  const processor = postcss()
+  const opts = assign({
     from: relativePath,
     to: relativePath,
     map: {
@@ -55,7 +55,7 @@ PostcssFilter.prototype.processString = function (content, relativePath) {
     let pluginInstance
 
     if (plugin.module) {
-      let pluginOptions = assign(opts, plugin.options || {})
+      const pluginOptions = assign(opts, plugin.options || {})
       pluginInstance = plugin.module(pluginOptions)
     } else {
       pluginInstance = plugin
