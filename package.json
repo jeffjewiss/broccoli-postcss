@@ -50,7 +50,7 @@
     "eslint": "^6.0.1",
     "eslint-config-standard": "^14.0.1",
     "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0",
     "glob": "^7.1.0",
