@@ -153,7 +153,7 @@ it('should expose non-syntax errors', function () {
     new broccoli.Builder(outputTree) // eslint-disable-line no-new
   } catch (err) {
     count++
-    assert.strictEqual(err.name, 'BuilderError')
+    assert.strictEqual(err.name, 'Error')
   }
 
   assert.strictEqual(count, 1)
