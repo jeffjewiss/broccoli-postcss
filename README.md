@@ -3,6 +3,8 @@
 [![Travis Build Status][travis-img]][travis-url]
 [![npm version][npm-img]][npm-url]
 [![Coverage Status][coveralls-img]][coveralls-url]
+[![monthly downloads][monthly-downloads-img]][monthly-downloads-url]
+[![total downloads][total-downloads-img]][total-downloads-url]
 
 The broccoli-postcss plugin runs your `css` through postcss plugins of your choosing.
 
@@ -110,6 +112,10 @@ module.exports = outputTree
 [travis-img]: https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master
 [travis-url]: https://travis-ci.org/jeffjewiss/broccoli-postcss
 [npm-img]: https://badge.fury.io/js/broccoli-postcss.svg
-[npm-url]: http://badge.fury.io/js/broccoli-postcss
+[npm-url]: https://www.npmjs.com/package/broccoli-postcss
+[monthly-downloads-img]: https://img.shields.io/npm/dm/broccoli-postcss.svg
+[monthly-downloads-url]: https://www.npmjs.com/package/broccoli-postcss
+[total-downloads-img]: https://img.shields.io/npm/dt/broccoli-postcss.svg
+[total-downloads-url]: https://www.npmjs.com/package/broccoli-postcss
 [coveralls-img]: https://coveralls.io/repos/github/jeffjewiss/broccoli-postcss/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/jeffjewiss/broccoli-postcss?branch=master
