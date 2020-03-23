@@ -40,8 +40,12 @@
   "dependencies": {
     "broccoli-funnel": "^3.0.0",
     "broccoli-persistent-filter": "^2.1.0",
+    "minimist": ">=1.2.5",
     "object-assign": "^4.1.1",
     "postcss": "^7.0.5"
+  },
+  "resolutions": {
+    "minimist": "1.2.5"
   },
   "devDependencies": {
     "async": "^3.0.0",
