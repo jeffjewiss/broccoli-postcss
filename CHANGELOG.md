@@ -1,5 +1,11 @@
 # master
 
+# 5.1.0
+
+* drop support for Node 8
+* dependency updates
+* security release for minimist
+
 # 5.0.0
 
 * drop support for Node 6
