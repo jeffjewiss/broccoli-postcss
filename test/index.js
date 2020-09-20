@@ -6,7 +6,7 @@ const assert = require('assert')
 const fs = require('fs')
 const path = require('path')
 const broccoli = require('broccoli')
-const postcssFilter = require('../')
+const PostcssFilter = require('../')
 const postcss = require('postcss')
 const rimraf = require('rimraf')
 const glob = require('glob')
@@ -50,9 +50,9 @@ afterEach(function () {
 })
 
 it('should process css', function () {
-  const outputTree = postcssFilter('fixture/success', { plugins: basicPluginSet, map: true })
+  const outputTree = new PostcssFilter('fixture/success', { plugins: basicPluginSet, map: true })
   const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
-  postcssFilter.warningStream = warningStreamStub
+  PostcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
     const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
@@ -63,9 +63,9 @@ it('should process css', function () {
 })
 
 it('should only include css from include patterns', function () {
-  const outputTree = postcssFilter('fixture/include', { plugins: basicPluginSet, map: true, include: ['fixture.css'] })
+  const outputTree = new PostcssFilter('fixture/include', { plugins: basicPluginSet, map: true, include: ['fixture.css'] })
   const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
-  postcssFilter.warningStream = warningStreamStub
+  PostcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
     const fixture = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
@@ -85,9 +85,9 @@ it('should only include css from include patterns', function () {
 })
 
 it('should not include css from exclude patterns', function () {
-  const outputTree = postcssFilter('fixture/exclude', { plugins: basicPluginSet, map: true, exclude: ['missing.css'] })
+  const outputTree = new PostcssFilter('fixture/exclude', { plugins: basicPluginSet, map: true, exclude: ['missing.css'] })
   const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
-  postcssFilter.warningStream = warningStreamStub
+  PostcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
     const fixture = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
@@ -107,7 +107,7 @@ it('should not include css from exclude patterns', function () {
 })
 
 it('should expose warnings', function () {
-  const outputTree = postcssFilter('fixture/warning', { plugins: testWarnPluginSet })
+  const outputTree = new PostcssFilter('fixture/warning', { plugins: testWarnPluginSet })
   const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   outputTree.warningStream = warningStreamStub
 
@@ -119,7 +119,7 @@ it('should expose warnings', function () {
 })
 
 it('should expose syntax errors', function () {
-  const outputTree = postcssFilter('fixture/syntax-error', {
+  const outputTree = new PostcssFilter('fixture/syntax-error', {
     errors: {
       showSourceCode: true,
       terminalColors: false
@@ -144,7 +144,7 @@ it('should expose syntax errors', function () {
 })
 
 it('should expose non-syntax errors', function () {
-  const outputTree = postcssFilter('fixture/missing-file', { plugins: testWarnPluginSet })
+  const outputTree = new PostcssFilter('fixture/missing-file', { plugins: testWarnPluginSet })
   let count = 0
 
   outputTree.warningStream = warningStreamStub
@@ -161,7 +161,7 @@ it('should expose non-syntax errors', function () {
 })
 
 it('should throw an error if there is not at least 1 plugin', function () {
-  const outputTree = postcssFilter('fixture/success', {})
+  const outputTree = new PostcssFilter('fixture/success', {})
   const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
   let count = 0
 
@@ -184,14 +184,14 @@ it('supports an array of plugin instances', function () {
   const basicOptions = basicPluginSet[0].options
   const pluginInstance = basicPlugin(basicOptions)
 
-  const outputTree = postcssFilter('fixture/success', {
+  const outputTree = new PostcssFilter('fixture/success', {
     plugins: [
       pluginInstance
     ],
     map: true
   })
   const builder = new broccoli.Builder(outputTree) // eslint-disable-line no-new
-  postcssFilter.warningStream = warningStreamStub
+  PostcssFilter.warningStream = warningStreamStub
 
   return builder.build().then(function () {
     const content = fs.readFileSync(path.join(builder.outputPath, 'fixture.css'), 'utf8')
