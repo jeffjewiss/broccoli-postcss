@@ -1,6 +1,6 @@
 # broccoli-postcss
 
-[![Travis Build Status][travis-img]][travis-url]
+[![Build Status][build-img]][build-url]
 [![npm version][npm-img]][npm-url]
 [![Coverage Status][coveralls-img]][coveralls-url]
 [![monthly downloads][monthly-downloads-img]][monthly-downloads-url]
@@ -109,8 +109,8 @@ var outputTree = compileCSS('app/styles', options)
 module.exports = outputTree
 ```
 
-[travis-img]: https://travis-ci.org/jeffjewiss/broccoli-postcss.svg?branch=master
-[travis-url]: https://travis-ci.org/jeffjewiss/broccoli-postcss
+[build-img]: https://github.com/jeffjewiss/broccoli-postcss/workflows/CI/badge.svg
+[build-url]: https://github.com/jeffjewiss/broccoli-postcss/actions?query=workflow%3ACI
 [npm-img]: https://badge.fury.io/js/broccoli-postcss.svg
 [npm-url]: https://www.npmjs.com/package/broccoli-postcss
 [monthly-downloads-img]: https://img.shields.io/npm/dm/broccoli-postcss.svg
