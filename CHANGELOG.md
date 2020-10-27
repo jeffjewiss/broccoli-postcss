@@ -1,5 +1,10 @@
 # master
 
+# 6.0.0
+
+* upgrade broccoli-persistent-filter and use native classes (@BarryThePenguin, @nlfurniss)
+* BREAKING: upgrade Postcss to V8
+
 # 5.1.0
 
 * drop support for Node 8
