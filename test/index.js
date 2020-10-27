@@ -7,7 +7,6 @@ const fs = require('fs')
 const path = require('path')
 const broccoli = require('broccoli')
 const PostcssFilter = require('../')
-const postcss = require('postcss')
 const rimraf = require('rimraf')
 const glob = require('glob')
 const async = require('async')
@@ -20,11 +19,14 @@ const basicPluginSet = [
 
 const testWarnPluginSet = [
   {
-    module: postcss.plugin('postcss-test-warn', function (opts) {
-      return function (css, result) {
-        result.warn('This is a warning.')
+    module (opts) {
+      return {
+        postcssPlugin: 'postcss-test-warn',
+        Root (root, { result }) {
+          result.warn('This is a warning.')
+        }
       }
-    })
+    }
   }
 ]
 
