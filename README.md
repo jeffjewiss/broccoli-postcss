@@ -23,7 +23,7 @@ const outputTree = compileCSS(tree, options)
 
 ## Compatibility
 
-Due to changes in the plugin API of Postcss V8 some plugins will need to be updated after upgrading Postcss. This should be as simple as updating this package from v4 to v5 (once released), however compatibility is not guaranteed.
+Due to changes in the plugin API of Postcss V8 some plugins will need to be updated after upgrading Postcss. This should be as simple as updating this package from V5 to V6, however compatibility is not guaranteed.
 
 - V6 broccoli-postcss -> Postcss V8
 - V5 broccoli-postcss -> Postcss V7
