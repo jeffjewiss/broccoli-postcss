@@ -20,7 +20,7 @@ module.exports = class extends Filter {
     this.warningStream = process.stderr
   }
 
-  get extension () {
+  get extensions () {
     return ['css']
   }
 
