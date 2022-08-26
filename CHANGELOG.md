@@ -1,5 +1,10 @@
 # master
 
+# 6.1.0
+
+- upgrade dependencies
+- fix `get extensions()`
+
 # 6.0.1
 
 - npm package security fixes
