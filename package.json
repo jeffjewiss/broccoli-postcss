@@ -55,7 +55,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",
-    "glob": "^8.0.3",
+    "glob": "^9.2.1",
     "husky": "4.3.8",
     "mocha": "^10.0.0",
     "nyc": "^15.0.0",
